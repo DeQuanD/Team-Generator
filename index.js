@@ -1,7 +1,7 @@
 const {Employee, Intern, Manager, Engineer } = require("./lib/index");
 const inquirer =require("inquirer")
 const fs = require('fs');
-const generatehtml = require("./generatehtml")
+const generateHTML = require("./generatehtml")
 
 function writeToFile(fileName, data) {
     return fs.writeFile(fileName, data, (err) =>{
@@ -53,16 +53,20 @@ const addEmployee = () => {
            .then((answers) => {
                 //console.log(answers);
                 if(answers.Role == 'Manager'){
-               manager = new Manager(employeeName = answers.Name, id = answers.Id, email = answers.Email, officeNumber = answers.Office)
+                    console.log(answers)
+                    return(
+               manager = new Manager(employeeName = answers.Name, id = answers.Id, email = answers.Email, officeNumber = answers.Office, role = answers.Role))
                     //console.log(manager)
                 }else if(answers.Role == 'Intern'){
                     return(
-                intern = new Intern(employeeName =answers.Name, id =answers.Id, email = answers.Email, school = answers.School))
+                intern = new Intern(employeeName =answers.Name, id =answers.Id, email = answers.Email, school = answers.School, role = answers.Role))
                 }else{
                     return(
-                intern = new Engineer( employeeName =answers.Name, id = answers.Id, email = answers.Email, github =answers.Github))
+                intern = new Engineer( employeeName =answers.Name, id = answers.Id, email = answers.Email, github =answers.Github, ))
                     }})
-            .then((input)=>{console.log(`the new employee is ${JSON.stringify(input)}`)})
+            .then((answer)=>{
+                console.log(answer)
+                writeToFile("dist/index.html", generateHTML({...answer}))})
            .catch((err) => {console.error(err)})
      };
    
@@ -70,3 +74,7 @@ const addEmployee = () => {
    
    /*.then((answer)=>{
     writeToFile("index.html", generatehtml({...answer}))*/
+
+   // .then((input)=>{console.log(`the new employee is ${JSON.stringify(input)}`)})
+
+   

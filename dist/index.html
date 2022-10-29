@@ -1,15 +1,4 @@
-const {Employee, Intern, Manager, Engineer } = require("./lib/index");
-  function roleData(role){
-    if( role.role == 'Manager'){
-        return `office number: ${role.officenumber}`
-    }else if(role = "Intern"){
-        return `School: ${role.school}`
-    }else
-        return `Github: ${role.github}`
-  }
-  
-  function generateHTML(data) {
-    return `
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -26,18 +15,18 @@ const {Employee, Intern, Manager, Engineer } = require("./lib/index");
     <section>
     <div class="card">
         <div class="card-header">
-           <h2> ${data.employeeName}</h2>
-           <h3> ${data.role}</h3>
+           <h2> DeQuan Dickson</h2>
+           <h3> Intern</h3>
         </div>
         <div class ="card-info-section">
             <div class="card-detail">
-               ID: ${data.id}
+               ID: 12
             </div>
             <div class="card-detail">
-               Email: ${data.email}
+               Email: DeQuan07@gmail.com
             </div>
             <div class="card-detail">
-                ${roleData(data)}
+                School: undefined
             </div>
         </div>
 
@@ -45,8 +34,3 @@ const {Employee, Intern, Manager, Engineer } = require("./lib/index");
     </section>
 </body>
     </html>
-`
-  
-  }
-  
-  module.exports = generateHTML
